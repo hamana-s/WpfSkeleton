@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace WpfSkeleton
+namespace WpfSkeleton.Models
 {
     /// <summary>
     /// string 拡張メソッド

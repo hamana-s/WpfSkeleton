@@ -1,9 +1,4 @@
-﻿using Reactive.Bindings;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace WpfSkeleton
+﻿namespace WpfSkeleton.Services
 {
     /// <summary>計算インターフェース</summary>
     public interface ICalculation

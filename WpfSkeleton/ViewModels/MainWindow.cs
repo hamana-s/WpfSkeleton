@@ -1,17 +1,22 @@
 ﻿using Prism.Mvvm;
 using Reactive.Bindings;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reactive.Linq;
+using System.Windows;
+using WpfSkeleton.Services;
+using WpfSkeleton.Models;
 
-namespace WpfSkeleton
+namespace WpfSkeleton.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
         /// <summary>アプリケーション名</summary>
         public ReactivePropertySlim<string> AppName { get; set; } = new ReactivePropertySlim<string>();
+
+        /// <summary>入力パス</summary>
+        public ReactivePropertySlim<string> InputPath { get; set; } = new ReactivePropertySlim<string>();
+
+        /// <summary>計算実行コマンド</summary>
+        public ReactiveCommand Execute { get; set; }
 
         /// <summary>コンストラクタ</summary>
         /// <param name="setting">設定(DI)</param>
@@ -20,8 +25,12 @@ namespace WpfSkeleton
         {
             AppName.Value = setting.AppName;
 
-            var ret = cal.Sum(10, 20);
-            Console.WriteLine(ret);
+            Execute = InputPath.Select(x => !x.IsEmpty()).ToReactiveCommand();
+            Execute.Subscribe(() =>
+            {
+                var ret = cal.Sum(10, 20);
+                MessageBox.Show($"{ret}");
+            });
         }
     }
 }

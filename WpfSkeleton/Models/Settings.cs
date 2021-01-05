@@ -2,7 +2,7 @@
 using System.IO;
 using Utf8Json;
 
-namespace WpfSkeleton
+namespace WpfSkeleton.Models
 {
     /// <summary>設定クラス</summary>
     public class Settings

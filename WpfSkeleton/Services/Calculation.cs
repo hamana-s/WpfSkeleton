@@ -1,9 +1,4 @@
-﻿using Reactive.Bindings;
-using System;
-using System.Linq;
-using System.Reactive.Linq;
-
-namespace WpfSkeleton
+﻿namespace WpfSkeleton.Services
 {
     /// <summary>計算クラス</summary>
     public sealed class Calculation : ICalculation

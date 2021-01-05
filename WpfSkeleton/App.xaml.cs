@@ -4,6 +4,9 @@ using Prism.Unity;
 using System;
 using System.IO;
 using System.Windows;
+using WpfSkeleton.Views;
+using WpfSkeleton.Services;
+using WpfSkeleton.Models;
 
 namespace WpfSkeleton
 {

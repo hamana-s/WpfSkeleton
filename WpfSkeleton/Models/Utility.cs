@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace WpfSkeleton
+﻿namespace WpfSkeleton.Models
 {
     public partial class Utility
     {
