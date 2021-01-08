@@ -4,6 +4,7 @@ using System.Reactive.Linq;
 using System.Windows;
 using WpfSkeleton.Services;
 using WpfSkeleton.Models;
+using Microsoft.Extensions.Logging;
 
 namespace WpfSkeleton.ViewModels
 {
@@ -21,7 +22,8 @@ namespace WpfSkeleton.ViewModels
         /// <summary>コンストラクタ</summary>
         /// <param name="setting">設定(DI)</param>
         /// <param name="cal">計算(DI)</param>
-        public MainWindowViewModel(Settings setting, Calculation cal)
+        /// <param name="logger">ログ(DI)</param>
+        public MainWindowViewModel(Settings setting, Calculation cal, ILogger logger)
         {
             AppName.Value = setting.AppName;
 
@@ -30,6 +32,7 @@ namespace WpfSkeleton.ViewModels
             {
                 var ret = cal.Sum(10, 20);
                 MessageBox.Show($"{ret}");
+                logger.LogInformation($"{ret}");
             });
         }
     }

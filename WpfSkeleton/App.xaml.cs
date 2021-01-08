@@ -4,9 +4,9 @@ using Prism.Unity;
 using System;
 using System.IO;
 using System.Windows;
-using WpfSkeleton.Views;
-using WpfSkeleton.Services;
 using WpfSkeleton.Models;
+using WpfSkeleton.Services;
+using WpfSkeleton.Views;
 
 namespace WpfSkeleton
 {
@@ -31,8 +31,12 @@ namespace WpfSkeleton
                             .AddJsonFile(path: "appsettings.json");
             var configuration = builder.Build();
 
+            var factory = new NLog.Extensions.Logging.NLogLoggerFactory();
+            var logger = factory.CreateLogger("");
+
             containerRegistry
                 .RegisterInstance(configuration.Get<Settings>())
+                .RegisterInstance(logger)
                 .Register<ICalculation>();
         }
     }
