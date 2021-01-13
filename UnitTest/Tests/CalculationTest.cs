@@ -24,17 +24,16 @@ namespace UnitTest.Tests
         [Scenario]
         public void SumTest()
         {
-            int result = 0;
-            int actual;
+            var result = 0;
 
             "値初期化"
                 .x(() => { result = 30; });
 
-            "値の計算1"
-                .x(() => { actual = Calculation.Sum(10, 20); Assert.Equal(result, actual); });
+            "値の計算(一致)"
+                .x(() => { Calculation.Sum(10, 20).Should().Be(result, "値が一致"); });
 
-            "値の計算2"
-                .x(() => { actual = Calculation.Sum(20, 20); Assert.Equal(result, actual); });
+            "値の計算(不一致)"
+                .x(() => { Calculation.Sum(20, 20).Should().Be(result, "値が不一致"); });
         }
     }
 }
