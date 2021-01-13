@@ -18,8 +18,11 @@ namespace UnitTest.Tests
         {
         }
 
+        /// <summary>
+        /// 計算テスト
+        /// </summary>
         [Scenario]
-        public void CalcTest1()
+        public void SumTest()
         {
             int result = 0;
             int actual;
