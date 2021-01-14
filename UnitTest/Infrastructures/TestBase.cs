@@ -1,9 +1,7 @@
 ﻿using System;
-using System.IO;
 using System.Text;
-using Xbehave;
-using Xunit.Abstractions;
 using WpfSkeleton.Services;
+using Xbehave;
 
 namespace UnitTest.Infrastructures
 {
