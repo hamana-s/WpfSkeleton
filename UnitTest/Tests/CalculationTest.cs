@@ -22,18 +22,22 @@ namespace UnitTest.Tests
         /// 計算テスト
         /// </summary>
         [Scenario]
-        public void SumTest()
+        [TestDataGenerator(@"..\..\..\TestFiles\計算結果一致.csv")]
+        public void SumTest1(int value1, int value2, int sum)
         {
-            var result = 0;
-
-            "値初期化"
-                .x(() => { result = 30; });
-
             "値の計算(一致)"
-                .x(() => { Calculation.Sum(10, 20).Should().Be(result, "値が一致"); });
+                .x(() => { Calculation.Sum(value1, value2).Should().Be(sum, "値が一致"); });
+        }
 
+        /// <summary>
+        /// 計算テスト
+        /// </summary>
+        [Scenario]
+        [TestDataGenerator(@"..\..\..\TestFiles\計算結果不一致.csv")]
+        public void SumTest2(int value1, int value2, int sum)
+        {
             "値の計算(不一致)"
-                .x(() => { Calculation.Sum(20, 20).Should().Be(result, "値が不一致"); });
+                .x(() => { Calculation.Sum(value1, value2).Should().NotBe(sum, "値が不一致"); });
         }
     }
 }
