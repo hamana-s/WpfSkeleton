@@ -5,13 +5,13 @@ using Xbehave;
 
 namespace UnitTest.Tests
 {
-    public class CalculationTest : TestBase
+    public class CalculationTest 
     {
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public CalculationTest() : base()
+        public CalculationTest()
         { }
 
         /// <summary>
