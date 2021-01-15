@@ -4,6 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Xunit.Sdk;
+using CsvHelper;
+using System.Text;
+using System.Globalization;
 
 namespace UnitTest.Infrastructures
 {
@@ -13,53 +16,32 @@ namespace UnitTest.Infrastructures
         private readonly string _fileName;
 
         /// <summary>
-        /// パラメーター変換
-        /// </summary>
-        /// <param name="parameter">値</param>
-        /// <param name="parameterType">型</param>
-        /// <returns>オブジェクト</returns>
-        private static object ConvertParameter(object parameter, Type parameterType)
-        {
-            return parameterType == typeof(int) ? Convert.ToInt32(parameter) : parameter;
-        }
-
-        /// <summary>
-        /// パラメーター変換
-        /// </summary>
-        /// <param name="values">パラメータの値</param>
-        /// <param name="parameterTypes">型</param>
-        /// <returns>配列</returns>
-        private static object[] ConvertParameters(IReadOnlyList<object> values, IReadOnlyList<Type> parameterTypes)
-        {
-            var result = new object[parameterTypes.Count];
-            for (var idx = 0; idx < parameterTypes.Count; idx++)
-            {
-                result[idx] = ConvertParameter(values[idx], parameterTypes[idx]);
-            }
-            return result;
-        }
-
-        /// <summary>
         /// データ取得
         /// </summary>
         /// <param name="testMethod">メソッド情報？</param>
         /// <returns>データ配列</returns>
         public override IEnumerable<object[]> GetData(MethodInfo testMethod)
         {
-            string line;
-
+            var ENCODING_CODE = 932;
             var pars = testMethod.GetParameters();
             var parameterTypes = pars.Select(par => par.ParameterType).ToArray();
 
-            using var csvFile = new StreamReader(_fileName);
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            using var _reader = new CsvReader(new StreamReader(_fileName, Encoding.GetEncoding(ENCODING_CODE)), CultureInfo.CurrentCulture);
+            _reader.Configuration.HasHeaderRecord = true;
 
             // ヘッダ行読み飛ばし
-            csvFile.ReadLine();
+            _reader.Read();
 
-            while ((line = csvFile.ReadLine()) != null)
+            while (_reader.Read())
             {
-                var row = line.Split(',');
-                yield return ConvertParameters(row, parameterTypes);
+                var q = new object[parameterTypes.Length];
+
+                for (var i = 0; i < parameterTypes.Length; i++)
+                {
+                    q[i] = _reader.GetField(i);
+                }
+                yield return q;
             }
         }
 
