@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace Models.Models
+namespace Models
 {
     public static partial class Utility
     {

@@ -1,5 +1,5 @@
-﻿namespace Models.Models
-{
+﻿namespace Models
+{ 
     public partial class Utility
     {
     }

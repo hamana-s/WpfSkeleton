@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using Models.Models;
+using Models;
 using Models.Services;
 using Prism.Mvvm;
 using Reactive.Bindings;

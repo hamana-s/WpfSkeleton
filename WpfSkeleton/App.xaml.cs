@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Models.Models;
+using Models;
 using Models.Services;
 using Prism.Ioc;
 using Prism.Unity;

@@ -1,7 +1,8 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Models.Models
+namespace Models
 {
+
     /// <summary>
     /// string 拡張メソッド
     /// </summary>
