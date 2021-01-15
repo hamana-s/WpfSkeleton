@@ -19,7 +19,7 @@ namespace UnitTest.Tests
         /// <param name="value1">値</param>
         /// <param name="value2">値</param>
         /// <param name="sum">結果</param>
-        [Scenario]
+        [Scenario(DisplayName = "計算テスト")]
         [TestDataGenerator(@"..\..\..\TestFiles\計算結果一致.csv")]
         public void SumTest(int value1, int value2, int sum)
         {

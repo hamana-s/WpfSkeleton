@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Models.Services;
+using System;
 using System.Text;
-using WpfSkeleton.Services;
 using Xbehave;
 
 namespace UnitTest.Infrastructures

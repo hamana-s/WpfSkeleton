@@ -1,4 +1,4 @@
-﻿namespace WpfSkeleton.Services
+﻿namespace Models.Services
 {
     /// <summary>計算インターフェース</summary>
     public interface ICalculation

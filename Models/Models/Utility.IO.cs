@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace WpfSkeleton.Models
+namespace Models.Models
 {
     public static partial class Utility
     {
@@ -14,7 +14,7 @@ namespace WpfSkeleton.Models
         {
             var dir = Path.GetPathRoot(path);
             var exroot = Regex.Match(path, @"^.+:\\(?<s>.+)").Groups["s"].Value;
-            foreach (var item in Path.GetDirectoryName(exroot)?.Split(new char[] { '\\' }) ?? new string[0])
+            foreach (var item in Path.GetDirectoryName(exroot)?.Split(new char[] { '\\' }) ?? Array.Empty<string>())
             {
                 if (dir == null || item == null) continue;
                 dir = Path.Combine(dir, item);

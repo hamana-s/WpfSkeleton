@@ -1,10 +1,10 @@
-﻿using Prism.Mvvm;
+﻿using Microsoft.Extensions.Logging;
+using Models.Models;
+using Models.Services;
+using Prism.Mvvm;
 using Reactive.Bindings;
 using System.Reactive.Linq;
 using System.Windows;
-using WpfSkeleton.Services;
-using WpfSkeleton.Models;
-using Microsoft.Extensions.Logging;
 
 namespace WpfSkeleton.ViewModels
 {
