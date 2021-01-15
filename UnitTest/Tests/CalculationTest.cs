@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using Models.Services;
 using UnitTest.Infrastructures;
 using Xbehave;
 
@@ -20,11 +21,13 @@ namespace UnitTest.Tests
         /// <param name="value2">値</param>
         /// <param name="sum">結果</param>
         [Scenario(DisplayName = "計算テスト")]
-        [TestDataGenerator(@"..\..\..\TestFiles\計算結果一致.csv")]
+        [CSVAttribute(@"..\..\..\TestFiles\計算結果一致.csv")]
         public void SumTest(int value1, int value2, int sum)
         {
-            "値の計算(一致)"
-                .x(() => { Calculation.Sum(value1, value2).Should().Be(sum, "値が一致"); });
+            var cal = new Calculation();
+
+            "加算した値が正しい事"
+                .x(() => { cal.Sum(value1, value2).Should().Be(sum, "値が一致"); });
         }
     }
 }
