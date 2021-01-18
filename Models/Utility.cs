@@ -1,4 +1,4 @@
-﻿namespace WpfSkeleton.Models
+﻿namespace Models
 {
     public partial class Utility
     {

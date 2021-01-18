@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Models;
+using Models.Services;
 using Prism.Ioc;
 using Prism.Unity;
 using System;
 using System.IO;
 using System.Windows;
-using WpfSkeleton.Models;
-using WpfSkeleton.Services;
 using WpfSkeleton.Views;
 
 namespace WpfSkeleton

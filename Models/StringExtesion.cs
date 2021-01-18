@@ -1,7 +1,8 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace WpfSkeleton.Models
+namespace Models
 {
+
     /// <summary>
     /// string 拡張メソッド
     /// </summary>
