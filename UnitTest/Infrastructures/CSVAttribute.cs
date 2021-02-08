@@ -1,12 +1,13 @@
-﻿using System;
+﻿using CsvHelper;
+using CsvHelper.Configuration;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Xunit.Sdk;
-using CsvHelper;
 using System.Text;
-using System.Globalization;
+using Xunit.Sdk;
 
 namespace UnitTest.Infrastructures
 {
@@ -27,8 +28,7 @@ namespace UnitTest.Infrastructures
             var parameterTypes = pars.Select(par => par.ParameterType).ToArray();
 
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            using var _reader = new CsvReader(new StreamReader(_fileName, Encoding.GetEncoding(ENCODING_CODE)), CultureInfo.CurrentCulture);
-            _reader.Configuration.HasHeaderRecord = true;
+            using var _reader = new CsvReader(new StreamReader(_fileName, Encoding.GetEncoding(ENCODING_CODE)), new CsvConfiguration(CultureInfo.CurrentCulture) { HasHeaderRecord = true });
 
             // ヘッダ行読み飛ばし
             _reader.Read();
