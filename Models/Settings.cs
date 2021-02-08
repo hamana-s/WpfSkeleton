@@ -23,7 +23,6 @@ namespace Models
             }
             catch (Exception)
             {
-                
             }
         }
     }
