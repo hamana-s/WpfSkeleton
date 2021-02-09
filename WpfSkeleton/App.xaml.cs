@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Models;
+using Models.DB.Context;
 using Models.Services;
 using Prism.Ioc;
 using Prism.Unity;
@@ -37,6 +38,7 @@ namespace WpfSkeleton
             containerRegistry
                 .RegisterInstance(configuration.Get<Settings>())
                 .RegisterInstance(logger)
+                .Register<DbContextBase, SQLServerContext>()
                 .Register<ICalculation>();
         }
     }
