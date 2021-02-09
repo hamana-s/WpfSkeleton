@@ -10,6 +10,9 @@ namespace Models
         /// <summary>アプリケーション名</summary>
         public string AppName { get; set; } = "test";
 
+        /// <summary>接続文字列</summary>
+        public string ConnectionString { get; set; }
+
         /// <summary>設定ファイル保存</summary>
         /// <param name="path">保存先</param>
         public void SaveJson(string path)
@@ -23,7 +26,6 @@ namespace Models
             }
             catch (Exception)
             {
-                
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Models;
+using Models.DB.Context;
 using Models.Services;
 using Prism.Ioc;
 using Prism.Unity;
@@ -29,6 +30,11 @@ namespace WpfSkeleton
             var builder = new ConfigurationBuilder()
                             .SetBasePath(Directory.GetCurrentDirectory())
                             .AddJsonFile(path: "appsettings.json");
+#if DEBUG
+            builder.AddJsonFile("appsettings.debug.json");
+#elif RELEASE
+            builder.AddJsonFile("appsettings.release.json");
+#endif
             var configuration = builder.Build();
 
             var factory = new NLog.Extensions.Logging.NLogLoggerFactory();
@@ -37,6 +43,7 @@ namespace WpfSkeleton
             containerRegistry
                 .RegisterInstance(configuration.Get<Settings>())
                 .RegisterInstance(logger)
+                .Register<DbContextBase, SQLServerContext>()
                 .Register<ICalculation>();
         }
     }

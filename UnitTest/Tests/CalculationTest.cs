@@ -8,7 +8,6 @@ namespace UnitTest.Tests
 {
     public class CalculationTest
     {
-
         /// <summary>
         /// コンストラクタ
         /// </summary>
@@ -29,7 +28,6 @@ namespace UnitTest.Tests
 
             "加算した値が正しい事"
                 .x(() => { cal.Sum(value1, value2).Should().Be(sum, "値が一致"); });
-
 
             "計算結果がオーバーフローすること"
                 .x(() =>
