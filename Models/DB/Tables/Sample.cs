@@ -3,7 +3,7 @@
 namespace Models.DB.Tables
 {
     /// <summary>サンプルテーブル</summary>
-    public class Sample
+    public record Sample
     {
         /// <summary>ID</summary>
         [Key]
