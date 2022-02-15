@@ -50,6 +50,7 @@ namespace WpfSkeleton.ViewModels
         {
             AppName.Value = setting.AppName;
             this.dbContext = dbContext;
+            //SampleDatas.Value = dbContext.Samples.ToArray();
 
             CalculateCommand = new ReactiveCommand();
             CalculateCommand.Subscribe(() =>
@@ -66,7 +67,7 @@ namespace WpfSkeleton.ViewModels
                 SampleDatas.Value = dbContext.Samples.ToArray();
                 SampleData.Value = null;
             });
-            SampleDatas.Value = dbContext.Samples.ToArray();
+            
         }
     }
 }
