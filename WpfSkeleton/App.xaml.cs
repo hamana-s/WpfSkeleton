@@ -3,7 +3,6 @@ using Models;
 using Models.DB.Context;
 using Models.Services;
 using Prism.Ioc;
-using Prism.Unity;
 using System;
 using System.IO;
 using System.Windows;
@@ -14,7 +13,7 @@ namespace WpfSkeleton
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : PrismApplication
+    public partial class App
     {
         protected override Window CreateShell()
         {
@@ -44,7 +43,7 @@ namespace WpfSkeleton
                 .RegisterInstance(configuration.Get<Settings>())
                 .RegisterInstance(logger)
                 .Register<DbContextBase, SQLServerContext>()
-                .Register<ICalculation>();
+                .Register<ICalculation, Calculation>();
         }
     }
 }
